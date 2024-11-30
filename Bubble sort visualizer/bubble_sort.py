@@ -1,18 +1,24 @@
 import eel
 eel.init('web')
-
-# data = [-2, 45, 0, 11, -9]
-
-# @eel.expose
-# def show_arr():
-#     return data
+sorting = True
 
 
 @eel.expose
-def bubble_sort(data: list) -> list:
+def reset_array():
+    global sorting
+    sorting = False
+
+
+@eel.expose
+def bubble_sort(data: list) -> any:
+    global sorting
+    sorting = True
     length: int = len(data)
     for i in range(length):
         for j in range(length-i-1):
+            if not sorting:
+                # print(sorting)
+                return
             if data[j] > data[j+1]:
                 data[j], data[j+1] = data[j+1], data[j]
                 eel.show_step(data, [j, j+1])

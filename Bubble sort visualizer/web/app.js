@@ -51,17 +51,19 @@ submitBtn.addEventListener("click", async () => {
   console.log("clicked !", array);
   try {
     await eel.bubble_sort(array)((data) => {
-      array = data;
-      showArray.innerHTML = `<strong>Answer</strong> : [${data}]`;
+      if (data != null) {
+        array = data;
+        showArray.innerHTML = `<strong>Answer</strong> : [${data}]`;
+      }
     });
   } catch (error) {
     console.log("Error occurred:", error);
   }
 });
 
-resetBtn.addEventListener("click", () => {
+resetBtn.addEventListener("click", async () => {
   try {
-    get_data();
+    await eel.reset_array()(() => get_data());
   } catch (error) {
     console.log("Error occurred:", error);
   }
