@@ -22,7 +22,7 @@ def bubble_sort(data: list) -> any:
             if data[j] > data[j+1]:
                 data[j], data[j+1] = data[j+1], data[j]
                 eel.show_step(data, [j, j+1])
-                eel.sleep(0.1)
+                eel.sleep(0.2)
     return data
 
 
