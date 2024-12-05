@@ -1,0 +1,29 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+.recursion-tree,
+.recursion-tree-test {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.level-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.blob {
+  padding: 4px;
+  background-color: lawngreen;
+  border: 1px solid black;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+}
+.b-highlighted {
+  background-color: orange;
+  border: 1px solid black;
+}
