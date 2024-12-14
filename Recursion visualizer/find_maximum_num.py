@@ -1,52 +1,54 @@
 import collections
 import eel
+import string
+import random
+
+CHAR_POOL = string.ascii_letters + string.digits
 eel.init('web')
 PORT = 8080
 
 data = [1, 3, 45, 10, 89, 90, 80, 17, 108, 1909, 121, 19]
 
-# log = collections.defaultdict(list)
+
 unsolved_log = collections.defaultdict(list)
 solved_log = collections.defaultdict(list)
 
 
+def generate_random_id(length=10):
+    return ''.join(random.choices(CHAR_POOL, k=length))
+
+
 @eel.expose
-def get_unsolved():
-    for key in sorted(unsolved_log.keys()):
-        eel.sleep(1)
-        eel.addBlob(unsolved_log[key], key)
+def get_unsolved_all():
+    return unsolved_log
 
 
 @eel.expose
 def get_solved():
-    for key in sorted(solved_log.keys(), reverse=True):
-        eel.sleep(1)
-        eel.solveBlob(solved_log[key], key)
+    return solved_log
 
 
-def solve(arr, depth=0):
+def solve(arr, depth=0, parent_id=-1):
     # base condition
+    curr_id = generate_random_id()
+    unsolved_log[depth].append((parent_id, curr_id, arr))
     if len(arr) == 1:
+        solved_log[depth].append((parent_id, arr[0]))
         return arr[0]
+
     # divide
     mid = len(arr)//2
     subarrayA = arr[:mid]
     subarrayB = arr[mid:]
+
     # conquer
-    left = solve(subarrayA, depth+1)
-    right = solve(subarrayB, depth+1)
+
+    left = solve(subarrayA, depth+1, curr_id)
+    right = solve(subarrayB, depth+1, curr_id)
 
     ans = max(left, right)
-    unsolved_log[depth].append(subarrayA)
-    unsolved_log[depth].append(subarrayB)
-    solved_log[depth].append(left)
-    solved_log[depth].append(right)
 
-    # log[depth].append({
-    #     "subarrays": (subarrayA, subarrayB),
-    #     "subarray_ans": (left, right),
-    #     "ans": ans
-    # })
+    solved_log[depth].append((parent_id, curr_id, ans))
     return ans
 
 
@@ -63,5 +65,5 @@ try:
     eel.start('index.html', mode=None, host='0.0.0.0', port=PORT)
 except Exception as e:
     print(f"Error starting Eel: {e}")
+
 print(solve(data))
-# print(log)

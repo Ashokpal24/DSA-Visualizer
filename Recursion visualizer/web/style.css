@@ -33,6 +33,8 @@
   border: 1px solid black;
   border-radius: 50px;
   margin-bottom: 2rem;
+  transition: all ease-out;
+  /* transition-duration: 0.2s; */
 }
 .b-highlighted {
   background-color: orange;
