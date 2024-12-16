@@ -8,8 +8,21 @@
     <title>Recursion Visualizer</title>
   </head>
   <body>
-    <div class="recursion-tree">
-      <svg id="connections"></svg>
+    <svg id="connections"></svg>
+    <div class="visualizer-container">
+      <div class="graph-container">
+        <div class="heading-section">
+          <span>Unsolved Graph</span>
+        </div>
+        <div class="recursion-tree-unsolved"></div>
+      </div>
+      <div class="graph-container">
+        <div class="heading-section">
+          <span style="margin-bottom: 2rem">Solved Graph</span>
+          <span class="answer-section">Largest Number is ?</span>
+        </div>
+        <div class="recursion-tree-solved"></div>
+      </div>
     </div>
     <!-- <div class="recursion-tree-test">
       <div class="level-container">

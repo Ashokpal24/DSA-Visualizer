@@ -3,13 +3,29 @@
 }
 
 .recursion-tree,
-.recursion-tree-test {
-  width: 100%;
+.recursion-tree-solved,
+.recursion-tree-unsolved {
+  width: 80%;
+  height: 47vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   position: relative;
+}
+.graph-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin-left: 2rem;
+}
+.heading-section {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 #connections {
   position: absolute;
@@ -21,15 +37,15 @@
   /* border: 1px solid black; */
 }
 .level-container {
-  width: 80%;
+  width: 60%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
 .blob {
-  padding: 4px;
-  background-color: lawngreen;
+  padding: 3px;
+  background-color: lightcoral;
   border: 1px solid black;
   border-radius: 50px;
   margin-bottom: 2rem;
@@ -37,6 +53,6 @@
   /* transition-duration: 0.2s; */
 }
 .b-highlighted {
-  background-color: orange;
+  background-color: lawngreen;
   border: 1px solid black;
 }

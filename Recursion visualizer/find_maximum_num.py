@@ -24,7 +24,7 @@ def get_unsolved_all():
 
 
 @eel.expose
-def get_solved():
+def get_solved_all():
     return solved_log
 
 
@@ -33,7 +33,7 @@ def solve(arr, depth=0, parent_id=-1):
     curr_id = generate_random_id()
     unsolved_log[depth].append((parent_id, curr_id, arr))
     if len(arr) == 1:
-        solved_log[depth].append((parent_id, arr[0]))
+        solved_log[depth].append((parent_id, curr_id, arr[0]))
         return arr[0]
 
     # divide
