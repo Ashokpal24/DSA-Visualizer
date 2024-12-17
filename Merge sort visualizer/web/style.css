@@ -1,0 +1,41 @@
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.connections {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.recursion-tree-solved,
+.recursion-tree-unsolved {
+  width: 80%;
+  height: 47vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.level-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.blob {
+  padding: 3px;
+  background-color: lightcoral;
+  border: 1px solid black;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+  transition: all ease-out;
+  /* transition-duration: 0.2s; */
+}
+
+.highlighted {
+  background-color: lawngreen;
+}
