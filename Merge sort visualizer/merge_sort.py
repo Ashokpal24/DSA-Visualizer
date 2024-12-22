@@ -12,6 +12,7 @@ import eel
 import collections
 import string
 import random
+import threading
 
 CHAR_POOL = string.ascii_letters + string.digits
 eel.init('web')
@@ -83,6 +84,16 @@ def merge_sort(arr, depth=0, parent_id=-1) -> None:
         k += 1
 
     solved_log[depth].append((parent_id, curr_id, arr))
+
+
+# def keep_alive():
+#     while True:
+#         eel.sleep(5)
+#         print("App is still running")
+
+
+# thread = threading.Thread(target=keep_alive, daemon=True)
+# thread.start()
 
 
 # print("Before sorting: ", data)

@@ -1,5 +1,7 @@
 * {
   font-family: "Courier New", Courier, monospace;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .connections {
@@ -27,7 +29,10 @@
   align-items: center;
 }
 .blob {
+  display: relative;
   padding: 3px;
+  min-width: 19px;
+  min-height: 18px;
   background-color: lightcoral;
   border: 1px solid black;
   border-radius: 50px;
