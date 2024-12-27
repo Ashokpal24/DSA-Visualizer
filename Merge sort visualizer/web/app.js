@@ -33,6 +33,7 @@ async function startApp() {
             )
         }, (500 * maxDepth));
     })
+    setInterval(() => eel.keep_alive(), 5000)
 }
 
 function addBlob(subvars_list = [], depth = 0, maxDepth = -1, type = "unsolved") {
@@ -93,11 +94,11 @@ function addBlob(subvars_list = [], depth = 0, maxDepth = -1, type = "unsolved")
                 drawConnections(currentNode = blobEl, parentID = parentID, type = type)
 
                 if (type == "solved") {
-                    let childNodes = Array.from(currentNode.children)
-                    let solvedArr = currentNode.dataset.sortedData.split(",").map(Number)
-                    let unsolvedArr = currentNode.dataset.unsortedData.split(",").map(Number)
+                    let childNodes = Array.from(blobEl.children)
+                    let solvedArr = blobEl.dataset.sortedData.split(",").map(Number)
+                    let unsolvedArr = blobEl.dataset.unsortedData.split(",").map(Number)
                     if (solvedArr.length > 1)
-                        animateSwap(currentNode, childNodes, solvedArr, unsolvedArr)
+                        animateSwap(blobEl, childNodes, solvedArr, unsolvedArr)
                 }
             }, duration)
         });
@@ -149,7 +150,7 @@ function startAnim() {
 async function animateSwap(currentNode, childNodes, solvedArr, unsolvedArr) {
     if (animBtn.dataset.play == "True") {
         let unsolvedArrTemp = [...unsolvedArr]
-        currentNode.style.backgroundColor = "lightcoral"
+        currentNode.style.backgroundColor = "lawngreen"
         solvedArr.forEach((value, index) => {
             let targetIndex = unsolvedArrTemp.indexOf(value)
             unsolvedArrTemp[targetIndex] = null
@@ -159,7 +160,7 @@ async function animateSwap(currentNode, childNodes, solvedArr, unsolvedArr) {
         await new Promise(resolve => {
             return setTimeout(resolve, 2000)
         })
-        currentNode.style.backgroundColor = "lawngreen"
+        currentNode.style.backgroundColor = "lightcoral"
         unsolvedArr.forEach((value, index) => {
             childNodes[index].innerHTML = unsolvedArr.length - 1 == index ? `${value}` : `${value},`
             childNodes[index].style.transform = `translateX(${index * dispostionValueX}px)`

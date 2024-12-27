@@ -12,7 +12,6 @@ import eel
 import collections
 import string
 import random
-import threading
 
 CHAR_POOL = string.ascii_letters + string.digits
 eel.init('web')
@@ -31,6 +30,9 @@ def unsolved_data() -> dict:
 def solved_data() -> dict:
     return solved_log
 
+@eel.expose()
+def keep_alive():
+    print("stayin alive..")
 
 def generate_random_id(length=10):
     return ''.join(random.choices(CHAR_POOL, k=length))
@@ -86,19 +88,6 @@ def merge_sort(arr, depth=0, parent_id=-1) -> None:
     solved_log[depth].append((parent_id, curr_id, arr))
 
 
-# def keep_alive():
-#     while True:
-#         eel.sleep(5)
-#         print("App is still running")
-
-
-# thread = threading.Thread(target=keep_alive, daemon=True)
-# thread.start()
-
-
-# print("Before sorting: ", data)
-# merge_sort(data)
-# print("After sorting: ", data)
 try:
     print(f"starting app at PORT {PORT}")
     eel.start('index.html', mode=None, host='0.0.0.0', port=PORT)
